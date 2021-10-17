@@ -77,6 +77,6 @@ namespace NumberTheory
         {
             wyn+=tab[i]*ytab[i];
         }
-        return wyn;
+        return (wyn+M) % M;
     }
 } // namespace NumberTheory
