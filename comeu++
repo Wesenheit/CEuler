@@ -1,0 +1,2 @@
+#!/bin/bash
+g++ $1 -o zad$2 -O3 -L$EULER -I$EULER/src -Wall -Wl,-rpath=$EULER -lProjectEuler
