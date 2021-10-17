@@ -1,5 +1,5 @@
 SHELL   	= /bin/bash
-CC      	= gcc
+CC      	= g++
 CPPFLAGS	= -fPIC -pedantic -Wall -Wextra -march=native -ggdb3 -O3
 TARGET 		= libProjectEuler.so
 SOURCES		= $(wildcard src/*.cpp)
