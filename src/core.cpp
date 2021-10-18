@@ -44,8 +44,8 @@ namespace NumberTheory
         std::cout<<"test"<<std::endl;
     }
 
-    template<typename T,typename S>
-    vector<T> primes(S u, T* tab)
+    template<typename T,typename S,size_t N>
+    vector<T> primes(S u, array<T,N> &tab)
     {
         vector<T> primes;
         while (u>1)
@@ -63,7 +63,7 @@ namespace NumberTheory
         return primes;
     }
     
-    template <typename T,typename S> S tot(S x, T* tab)
+    template <typename T,typename S,size_t N> S tot(S x, array<T,N> &tab)
     {
         S wyn=x;
         vector<T> temp =primes<T,S>(x,tab);

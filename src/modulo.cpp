@@ -62,7 +62,7 @@ namespace NumberTheory
     }
 
 
-    template <typename T>T chin(T M,vector<T> ytab, vector<T> ntab)
+    template <typename T>T chin(T M, vector<T> &ytab, vector<T> &ntab)
     {
         assert(ytab.size()==ntab.size());
         array<T,ytab.size()> tab;
