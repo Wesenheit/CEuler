@@ -48,15 +48,17 @@ namespace NumberTheory
     vector<T> primes(S u, array<T,N> &tab)
     {
         vector<T> primes;
+        primes.push_back(tab[u]);
+        u/=tab[u];
         while (u>1)
         {
-            if (primes[primes.size()-1]==tab[u])
+            if (primes.back()==tab[u])
             {
                 u/=tab[u];
             }
             else
             {
-                primes.insert(tab[u]);
+                primes.push_back(u);
                 u/=tab[u];
             }
         }
