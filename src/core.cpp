@@ -94,4 +94,16 @@ namespace NumberTheory
         }
         return a;
     }
+    type pow(type base, type exp)
+    {
+        type res = 1;
+        while (exp) 
+        {
+            if (exp & 1)
+                res *= base;
+            exp >>= 1;
+            base *= base;
+        }
+        return res;
+    }
 } 

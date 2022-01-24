@@ -1,6 +1,7 @@
 #include <vector>
 #include <array>
 #include <cassert>
+#include <cmath>
 #include "ProjectEuler.h"
 using namespace std;
 namespace NumberTheory
@@ -80,5 +81,80 @@ namespace NumberTheory
             wyn+=tab[i]*ytab[i];
         }
         return (wyn+M) % M;
+    }
+
+    type leg_sym(type a, type p)
+    {
+        type ls=pow(a,(p-1)/2) %p;
+        if (ls==p-1)
+        {
+            return -1;
+        }
+        else
+        {
+            return ls;
+        }
+    }
+
+    type mod_sqrt(type a, type p)
+    {
+        if (leg_sym(a,p)!= 1)
+        {
+            return 0;
+        }
+        else if (a==0)
+        {
+            return 0;
+        }
+        else if (p==2)
+        {
+            return p;
+        }
+        else if (p%4==3)
+        {
+            return pow(a,(p+1)/4) %p;
+        }
+
+
+        type s=p-1;
+        type e=0;
+        while (s%2==0)
+        {
+            s=s/2;
+            e+=1;
+        }
+        type n=2;
+        while (leg_sym(n,p)!=-1)
+        {
+            n+=1;
+        }
+        type x=pow(a,(s+1)/2) %p;
+        type b=pow(a,s) %p;
+        type g=pow(n,s) %p;
+        type r=e;
+        type gs,t,m;
+        while (true)
+        {
+            t=b;
+            m=0;
+            for (type m=0;m<r;m++)
+            {
+                if (t==1)
+                {
+                    break;
+                }
+                t=pow(t,2) %p;
+            }
+            if (m==0)
+            {
+                return x;
+            }
+            gs=pow(g,pow(2,r-m-2)) %p;
+            g= (gs*gs) %p;
+            x=(x*gs)%p;
+            b=(b*g)%p;
+            r=m;
+        }
+        
     }
 } // namespace NumberTheory
