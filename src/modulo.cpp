@@ -1,20 +1,22 @@
 #include <vector>
 #include <array>
+#include <cassert>
+#include "ProjectEuler.h"
 using namespace std;
 namespace NumberTheory
 {
-    template <typename T>T inverse(T a, T n)
+    type inverse(type a, type n)
     {
-        T t=0;
-        T nt=1;
-        T r=n;
-        T nr=a;
-        T q;
+        type t=0;
+        type nt=1;
+        type r=n;
+        type nr=a;
+        type q;
         while (nr!=0)
         {
             q=r/nr;
-            T temp1=r-q*nr;
-            T temp2=t-q*nt;
+            type temp1=r-q*nr;
+            type temp2=t-q*nt;
             r=nr;
             t=nt;
             nr=temp1;
@@ -30,14 +32,14 @@ namespace NumberTheory
         }
         return t;
     }
-    template <typename T>array<T,3> ext_euc(T a, T b)
+    array<type,3> ext_euc(type a, type b)
     {
-        T ol_r=a;
-        T r=b;
-        T ol_s=1;
-        T s=0;
-        T temp;
-        T q;
+        type ol_r=a;
+        type r=b;
+        type ol_s=1;
+        type s=0;
+        type temp;
+        type q;
         while (r!=0)
         {
             q=ol_r/r;
@@ -48,7 +50,7 @@ namespace NumberTheory
             s=ol_s-q*s;
             ol_r=temp;
         }
-        T bez_t;
+        type bez_t;
         if (b!=0)
         {
             bez_t=(ol_r-ol_s*a)/b;
@@ -57,22 +59,22 @@ namespace NumberTheory
         {
             bez_t=0;
         }
-        array<T,3> wyn={ol_r,ol_s,bez_t};
+        array<type,3> wyn={ol_r,ol_s,bez_t};
         return wyn;
     }
 
 
-    template <typename T>T chin(T M, vector<T> &ytab, vector<T> &ntab)
+    type chin(type M, vector<type> &ytab, vector<type> &ntab)
     {
         assert(ytab.size()==ntab.size());
-        array<T,ytab.size()> tab;
+        vector<type> tab=vector<type>(ytab.size());
         for (int i = 0; i < ytab.size(); i++)
         {
-            T Mi=M/ntab[i];
-            T gi=ext_euc(ntab[i],Mi)[2];
+            type Mi=M/ntab[i];
+            type gi=ext_euc(ntab[i],Mi)[2];
             tab[i]=Mi*gi;
         }
-        T wyn=0;
+        type wyn=0;
         for (int i = 0; i < ntab.size(); i++)
         {
             wyn+=tab[i]*ytab[i];

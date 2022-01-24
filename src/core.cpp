@@ -1,15 +1,14 @@
 #include <cmath>
 #include <iostream>
-#include <list>
-#include <array>
 #include <vector>
+#include "ProjectEuler.h"
+
 using namespace std;
 namespace NumberTheory
 {   
-    template<typename T,size_t N>
-    array<T,N> sito()
+    vector<type> sito(type N)
     {
-        array<T,N> tab;
+        vector<type> tab=vector<type>(N);
         tab[0]=1;
         tab[1]=1;
         for(int i = 2; i < N+1; i++)
@@ -44,10 +43,9 @@ namespace NumberTheory
         std::cout<<"test"<<std::endl;
     }
 
-    template<typename T,typename S,size_t N>
-    vector<T> primes(S u, array<T,N> &tab)
+    vector<type> primes(type u, vector<type> &tab)
     {
-        vector<T> primes;
+        vector<type> primes;
         primes.push_back(tab[u]);
         u/=tab[u];
         while (u>1)
@@ -65,10 +63,10 @@ namespace NumberTheory
         return primes;
     }
     
-    template <typename T,typename S,size_t N> S tot(S x, array<T,N> &tab)
+    type tot(type x, vector<type> &tab)
     {
-        S wyn=x;
-        vector<T> temp =primes<T,S>(x,tab);
+        type wyn=x;
+        vector<type> temp =primes(x,tab);
         if (x==0)
         {
             return 0;
@@ -81,12 +79,12 @@ namespace NumberTheory
             }
             
         }
-        delete temp;
-        return (S) floor(wyn);
+        //delete temp;
+        return (type) floor(wyn);
     }
-    template <typename T> T nwd (T a,T b)
+    type nwd (type a,type b)
     {
-        T c;
+        type c;
         while (b>0)
         {
             c=a%b;

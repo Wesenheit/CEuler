@@ -1,20 +1,22 @@
 #include <array>
 #include <vector>
+#include <cstdint>
 using namespace std;
+
+//**********
+#define type uint64_t
+//**********
+
 namespace NumberTheory
 {
-    //core.cpp
-    template <typename T,size_t N> array<T,N> sito(); //return array containing smaller prime dividing given number
-    template <typename T,typename S,size_t N> vector<T> primes(S u,array<T,N> &tab);// return array of primes dividing s, tab =sito
-    template <typename T,typename S,size_t N> T tot(S x, array<T,N> &tab);//return totient of x, tab=sito
-    template <typename T> T nwd (T a,T b); //return least common divisor 
+    vector<type> sito(); //return array containing smaller prime dividing given number
+    vector<type> primes(type u,vector<type> &tab);// return array of primes dividing s, tab =sito
+    type tot(type x, vector<type> &tab);//return totient of x, tab=sito
+    type nwd (type a,type b); //return least common divisor 
 
 
-    //modulo.cpp
-    template <typename T>T inverse(T a, T n); // inverse element of a in mod n group
-    template <typename T>array<T,3> ext_euc(T a, T b);
-    template <typename T>T chin(T M,vector<T> &ytab, vector<T> &ntab);
+    type inverse(type a, type n); // inverse element of a in mod n group
+    array<type,3> ext_euc(type a, type b);
+    type chin(type M,vector<type> &ytab, vector<type> &ntab);
 
 } // namespace NumberTheory
-#include "core.cpp"
-#include "modulo.cpp"
